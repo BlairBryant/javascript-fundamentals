@@ -122,3 +122,161 @@ six(dividedBy(eight()))
 
 
 ---------------------------------------------------------
+
+
+//Weight for weight
+
+https://www.codewars.com/kata/weight-for-weight/train/javascript
+
+function orderWeight(str) {
+  if (str.length === 0) return ""
+  let arr = []
+  str.split(' ').forEach(x => {
+    let newNum = 0
+    for (let i = 0; i < x.length; i++) {
+      newNum += +x[i]
+    }
+    arr.push(newNum)
+    arr.sort((a, b) => a - b)
+  })
+
+  str.split(' ').sort().forEach(x => {
+    let newNum = 0
+    for (let j = 0; j < x.length; j++) {
+      newNum += +x[j]
+    }
+    arr[arr.indexOf(newNum)] = x
+  })
+  return arr.join(' ')
+}
+
+
+// Moving Zeroes To The End
+https://www.codewars.com/kata/52597aa56021e91c93000cb0/solutions/javascript
+
+var moveZeros = function (arr) {
+  let count = 0
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === 0) {
+      arr.splice(i, 1)
+      i--
+      count++
+    }
+  }
+  for (let i = 0; i < count; i++) {
+    arr.push(0)
+  }
+  return arr
+}
+
+--------------------------------------------------------------------------
+############
+Integers: Recreation One
+https://www.codewars.com/kata/integers-recreation-one/train/javascript
+Doesn't run within time limit.
+
+function squaring(num) {
+  let arr = []
+  for (let i = 1; i <= num; i++) {
+    if (num % i === 0) arr.push(Math.pow(i, 2))
+  }
+  let squaredSum = arr.reduce((x, y) => x + y)
+  if (Number.isInteger(Math.sqrt(squaredSum))) return squaredSum
+  return false
+}
+
+function listSquared(m, n) {
+  let ans = []
+  let currentNum;
+  for (let i = m; i <= n; i++) {
+    currentNum = squaring(i)
+    if (currentNum) ans.push([i, currentNum]) 
+  }
+  return ans
+}
+
+listSquared(1, 5000)
+
+
+----------------------------------------------------------------------
+Did I Finish my Sudoku?
+https://www.codewars.com/kata/did-i-finish-my-sudoku/train/javascript
+
+
+function doneOrNot(board){
+  let tempArr = []
+  let squareArr = [[],[],[],[],[],[],[],[],[]]
+  for(let i = 0; i < 9; i++) {
+    if (board[i].reduce((x, y) => x + y) !== 45) return 'Try again!'
+    for (let j = 0; j < 9; j++) {
+      if(!board[i][j]) return 'Try again'
+      tempArr.push(board[j][i])
+      if (i < 3) {
+        if (j < 3) squareArr[0].push(board[i][j])
+        else if (j < 6) squareArr[1].push(board[i][j])
+        else squareArr[2].push(board[i][j])
+      }
+      else if (i < 6) {
+        if (j < 3) squareArr[3].push(board[i][j])
+        else if (j < 6) squareArr[4].push(board[i][j])
+        else squareArr[5].push(board[i][j])
+      } else {
+          if (j < 3) squareArr[6].push(board[i][j])
+          else if (j < 6) squareArr[7].push(board[i][j])
+          else squareArr[8].push(board[i][j])
+      }
+    }
+    if (tempArr.reduce((x, y) => x + y) !== 45) return 'Try again!'
+    tempArr = []
+  }
+  squareArr.forEach(x => {
+    if (x.reduce((x, y) => x + y !== 45)) return 'Try again!'
+  })
+  let toggle = true
+  squareArr.forEach(x => {
+    x.forEach((y, i) => {
+      if (x.indexOf(y) !== i) toggle = false
+    })
+  })
+  if (!toggle) return 'Try again!'
+  return 'Finished!'
+}
+
+-----------------------------------------------------------------------
+Pick peaks
+https://www.codewars.com/kata/pick-peaks/train/javascript
+I was able to do this problem with only loop, where most people used multiple.
+
+function pickPeaks(arr){
+  let current = []
+  let pos = []
+  let peaks = []
+  for (let i = 1; i < arr.length; i++) {
+    if (arr[i] > arr[i-1]) current = [i, arr[i]]
+    if (current[1] > arr[i]) {
+      pos.push(current[0])
+      peaks.push(current[1])
+      current = 0
+    }
+  }
+  return {pos,peaks}
+}
+
+----------------------------------------------------------------------
+
+
+
+
+
+----------------------------------------------------------------------
+
+
+
+
+
+----------------------------------------------------------------------
+
+
+
+
+----------------------------------------------------------------------
