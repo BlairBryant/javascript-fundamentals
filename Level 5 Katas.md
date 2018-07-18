@@ -263,9 +263,16 @@ function pickPeaks(arr){
 }
 
 ----------------------------------------------------------------------
+Pete, the baker
+https://www.codewars.com/kata/525c65e51bf619685c000059/solutions/javascript
 
-
-
+function cakes(recipe, available) {
+  let arr = []
+  for (let x in available) {
+    if (recipe.hasOwnProperty(x)) arr.push(Math.floor([available[x] / recipe[x]]))
+  }
+  return arr.length === Object.keys(recipe).length ? arr.sort((a, b) => a -b)[0] : 0
+}
 
 
 ----------------------------------------------------------------------
