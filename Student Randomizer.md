@@ -73,7 +73,7 @@ function getPairs() {
   }
   ###If students were left in the array because they have already worked with eachother, the code below will pair them together for the day.
   ###If only one student is left in the array, meaning that the number of students for the day was odd, they would be paired with the mentors. 
-  if (today.length !== 0) {
+  if (today.length !== 0) {1
     for (let i = 0; i < today.length; i++) {
       if (today.length % 2 === 0) {
         pairs.push([today[i].name, today[i + 1].name])

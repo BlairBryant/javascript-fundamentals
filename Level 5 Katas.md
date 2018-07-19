@@ -264,7 +264,7 @@ function pickPeaks(arr){
 
 ----------------------------------------------------------------------
 Pete, the baker
-https://www.codewars.com/kata/525c65e51bf619685c000059/solutions/javascript
+https://www.codewars.com/kata/pete-the-baker/javascript
 
 function cakes(recipe, available) {
   let arr = []
@@ -274,11 +274,27 @@ function cakes(recipe, available) {
   return arr.length === Object.keys(recipe).length ? arr.sort((a, b) => a -b)[0] : 0
 }
 
-
 ----------------------------------------------------------------------
+############
+First non-repeating character
+https://www.codewars.com/kata/first-non-repeating-character
 
+function firstNonRepeatingLetter(s) {
+  let obj = {}
+  for (let i = 0; i < s.length; i++) {
+    if (obj.hasOwnProperty(s[i])) s[i].toUpperCase() === s[i] ? obj[s[i]] += 'u' : obj[s[i]] += 'l'
+    else s[i].toUpperCase() === s[i] ? obj[s[i].toUpperCase()] = 'u' : obj[s[i].toUpperCase()] = 'l'
+  }
+  console.log(obj)
+  for (let x in obj) {
+    if (obj[x].length === 1) return obj[x] === 'u' ? x : x.toLowerCase() 
+  }
+  return ''
+}
 
+firstNonRepeatingLetter('sT9reS2S')
 
+I was able to solve this with only letters, but no numbers or symbols.
 
 
 ----------------------------------------------------------------------
