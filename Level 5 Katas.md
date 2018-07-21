@@ -298,7 +298,45 @@ I was able to solve this with only letters, but no numbers or symbols.
 
 
 ----------------------------------------------------------------------
+XXXXXXXXXXXXXXXXXXXX
+Find the smallest
+https://www.codewars.com/kata/find-the-smallest
 
+function smallest(n) {
+  let str = n.toString().split('')
+  
+  let sorted = n.toString().split('').sort((a, b) => a - b)
+  if (str[0] > sorted[0] && str[1] === sorted[0]) {
+    let removed = str.splice(1, 1)
+    str.splice(0,0,removed[0])
+    return [+str.join(''), 0, 1]
+  }
+  for (let i = 0; i < str.length; i++) {
+    if (str[0])
+  }
+  let idx = str.indexOf(sorted[0])
+  let removed = str.splice(idx, 1)
+  str.splice(0, 0, removed[0])
+  console.log(str)
+  return [+str.join(''), idx, 0]
+}
+
+smallest(285365)
+
+
+----------------------------------------------------------------------
+
+
+
+----------------------------------------------------------------------
+
+
+
+----------------------------------------------------------------------
+
+
+
+----------------------------------------------------------------------
 
 
 
