@@ -325,13 +325,63 @@ smallest(285365)
 
 
 ----------------------------------------------------------------------
+XXXXXXXXXXXXXXXXXXXXXXXXX
+Vector class
+https://www.codewars.com/kata/vector-class/train/javascript
 
+var Vector = function (components) {
+  this.components = components
+  this.add = function(arr) {
+    if(arr.components.length === this.components.length) {
+      return this.components.map((x, i) => x += arr.components[i])
+    }
+    console.log('error')
+  }
+  this.subtract = function(arr) {
+    if(arr.components.length === this.components.length) {
+      return this.components.map((x, i) => x -= arr.components[i])
+    }
+    console.log('error')
+  }
+  this.dot = function(arr) {
+    if(arr.components.length === this.components.length) {
+      return this.components.map((x, i) => x *= arr.components[i]).reduce((a, b) => a + b)
+    }
+    console.log('error')
+  }
+  this.norm = function() {
+    return Math.sqrt(this.components.map(x => x = Math.pow(x, 2)).reduce((a, b) => a + b))
+  }
+};
+
+let a = new Vector([1, 4, 6])
+let b = new Vector([2, 5, 6])
+
+a.norm()
 
 
 ----------------------------------------------------------------------
+Josephus Permutation
+https://www.codewars.com/kata/josephus-permutation/train/javascript
 
-
-
+function josephus(items,k){
+  let itemsLength = items.length
+  let ans = []
+  let i = 0
+  let current = 1
+  while (ans.length < itemsLength) {
+    if (i === items.length) i = 0
+      else if (current === k) {
+      ans.push(items[i])
+      items.splice(i, 1)
+      current = 1
+    } else {
+      i++
+      current++
+    }
+  }
+  return ans
+}
 ----------------------------------------------------------------------
 
 
