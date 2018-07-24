@@ -383,11 +383,69 @@ function josephus(items,k){
   return ans
 }
 ----------------------------------------------------------------------
+Greed is Good
+https://www.codewars.com/kata/greed-is-good/train/javascript
 
-
+function score(dice) {
+  dice.sort()
+  let points = 0
+  let tripleCheck = 0
+  for (let i = 1; i < dice.length; i++) {
+    if (dice[i] === dice[i-1] && dice[i] === dice[i+1]) {
+      tripleCheck = dice[i]
+      break;
+    }
+  }
+  if (tripleCheck === 1) points += 1000
+  if (tripleCheck > 1 && tripleCheck < 7) points += tripleCheck * 100
+  let idx = dice.indexOf(tripleCheck)
+  console.log(tripleCheck)
+  tripleCheck ? dice.splice(idx, 3) : null
+  console.log(dice)
+  for (let i = 0; i < dice.length; i++) {
+    if (dice[i] === 1) points += 100
+    if (dice[i] === 5) points += 50
+  }
+  return points
+}
 
 ----------------------------------------------------------------------
+Math Issues
+https://www.codewars.com/kata/math-issues/train/javascript
 
+Math.round = function(number) {
+  let n = number.toString().split('')
+  let plus = false
+  for (let i = 0; i < n.length; i++) {
+    if (n[i] === '.') {
+      if (n[i+1] > 4) {
+        plus = true
+      }
+      n.splice(i)
+    }
+  }
+  return plus ? +n.join('') + 1 : +n.join('')
+};
 
+Math.ceil = function(number) {
+  let n = number.toString().split('')
+  let flag = false
+  for (let i = 0; i < n.length; i++) {
+    if (n[i] === '.') {
+        n.splice(i)
+        flag = true
+    }
+  }
+  return flag ? +n.join('') + 1 : number
+};
 
+Math.floor = function(number) {
+    let n = number.toString().split('')
+  for (let i = 0; i < n.length; i++) {
+    if (n[i] === '.') {
+        n.splice(i)
+    }
+  }
+  return + n.join('')
+};
 ----------------------------------------------------------------------
