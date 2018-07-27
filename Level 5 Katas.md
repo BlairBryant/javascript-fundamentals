@@ -449,3 +449,17 @@ Math.floor = function(number) {
   return + n.join('')
 };
 ----------------------------------------------------------------------
+Valid Parentheses
+https://www.codewars.com/kata/valid-parentheses/train/javascript
+
+function validParentheses(parens){
+  let left = 0
+  let right = 0
+  if (parens[0] === ')' || parens[parens.length-1] === '(') return false
+  parens.split('').forEach(x => x === '(' ? left++ : right++)
+  return left === right
+}
+
+----------------------------------------------------------------------
+
+
