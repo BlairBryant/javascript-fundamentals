@@ -461,5 +461,34 @@ function validParentheses(parens){
 }
 
 ----------------------------------------------------------------------
+XXXXXXXXXXXXXXXXXXXXXXXXXX
+Unknown Amount of Missing Numbers in an Unordered Array. (Hardcore version)
+https://www.codewars.com/kata/unknown-amount-of-missing-numbers-in-an-unordered-array-hardcore-version/train/javascript
+
+function missNumsFinder(arr) {
+  let max = Math.max(...arr)
+  let ans = []
+  let obj = {}
+  for (let i = 0; i < arr.length; i++) {
+    obj[arr[i]] = 1    
+  }
+  
+  for(let i = 1; i < max; i++) {
+    if (!obj.hasOwnProperty(i)) ans.push(i)
+  }
+  return ans
+}
+
+missNumsFinder([1,4,6,7,17,4])
 
 
+function missNumsFinder(arr) {
+  let max = Math.max(...arr)
+  let ans = []
+  for(let i = 1; i < max; i++) {
+    if(!arr.includes(i)) ans.push(i)
+  }
+  return ans
+}
+
+missNumsFinder([1,4,6,7,17,4])
